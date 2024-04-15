@@ -1,0 +1,79 @@
+/* Page */
+div.App {
+
+    iframe {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        
+        border: none;
+    }
+  
+    .setTime-container {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+
+        /* Checkbox Hack */
+        #toggle {
+            display:none;
+        }
+        
+        label {
+            background-color: #1bf5a5;
+            padding: .5rem;
+            border-radius: 50%;
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+            line-height: 0;
+            display: inline-block;
+            cursor: pointer;
+        }
+        
+        /* CSS padrão da div */
+        form#mostra {
+            display:none;
+            margin-top: .5rem;
+            align-items: center;
+
+            input {
+                width: 100%;
+                max-width: 5rem;
+                padding: .4rem;
+                font-size: 1.6rem;
+                border-radius: 5px 0 0 5px;
+            }
+            button {
+                background-color: #00000098;
+                color: #fff;
+                font-weight: 600;
+                height: 27px;
+                padding: .5rem;
+                border-radius: 0 5px 5px 0;
+            }
+        }
+        
+        /* CSS quando o checkbox está marcado */
+        #toggle:checked ~ #mostra {
+            display: flex;
+        }
+    }
+    
+    .btns-container {
+        button {
+            background-color: #1bf5a5;
+            padding: .5rem;
+            border-radius: 50%;
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+            line-height: 0;
+            
+            position: absolute;
+            bottom: 20px;
+            right: 28px;
+        }
+        .btnStop {
+            background-color: #f51b38;
+        }
+    }
+}

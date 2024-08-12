@@ -2,7 +2,7 @@
 import { useState, useEffect, useRef } from 'react';
 
 // JSON:
-import jsonProjetos from '../public/projetos.json';
+import carregaJson from './utils/getJson';
 
 // Assets:
 import iconPlay from './assets/play-circle.svg';
@@ -16,9 +16,10 @@ import './App.css';
 
 export default function App() {
   const [urlsProjetos, setUrlsProjetos] = useState([]);
+
   const [indice, setIndice] = useState(0);
   const [play, setPlay] = useState(false);
-  const [config, setConfig] = useState(false);
+  const [config, setConfig] = useState(false); // da pra otimizar eliminando esta state
 
   const intervaloRef = useRef(45000);
   const inputRef = useRef(null);
@@ -31,7 +32,7 @@ export default function App() {
       inputRef.current.value = (intervaloRef.current)/1000;
 
       try {
-        const response = await jsonProjetos;
+        const response = await carregaJson();
         
         for(let projeto of response) {
           listaUrl.push(projeto.url);
@@ -41,15 +42,13 @@ export default function App() {
         // startAutomatic(); //useCallback
       } 
       catch(erro) {
-        console.log('Deu erro:');
-        console.log(erro);
+        console.log('Deu erro: ', erro);
       }
     }
     carregaUrlProjetos();
   }, []);
 
   
-  // function changeIndice() {lucas.anjos@bizsys.com.br
   const handleStart = ()=> {
     console.log('INICIO');
     setPlay(true);
@@ -118,8 +117,7 @@ export default function App() {
       </div>
 
       <div className="btns-container">
-        {!play
-        ?
+        {!play ?
           <button className='btnStart' onClick={handleStart}>
             <img src={iconPlay} alt="" />
           </button>
